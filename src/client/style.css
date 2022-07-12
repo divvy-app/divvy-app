@@ -133,6 +133,14 @@ body, html {
   align-items: center;
   justify-content: center;
 }
+
+.input-signup {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .calculation {
   margin-top: 10px;
   font-size: large;
