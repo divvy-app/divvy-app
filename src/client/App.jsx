@@ -5,13 +5,13 @@
 
 import React from "react";
 import "./style.css";
-import TSTest from "./TSTest";
+import HooksExample from "./HooksExample";
 
 // includes JSX
 const App = () => (
   <div>
     <h1>Testing</h1>
-    <TSTest name="Pal" />
+    <HooksExample name="Pal" />
   </div>
 );
 
