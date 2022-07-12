@@ -3,7 +3,6 @@
  */
 const cookieParser = require("cookie-parser");
 const express = require("express");
-const morgan = require("morgan");
 const path = require("path");
 
 //Importing routers
@@ -20,8 +19,7 @@ const ERROR_TEMPLATE = Object.freeze({
 
 // Load baseline app and external middleware
 const app = express();
-app.use(morgan(':date :method ":url"'));
-app.use(express.static(path.resolve(__dirname, "../../dist")));
+app.use("/assets", express.static(path.join(__dirname, "../client/assets")));
 app.use(express.json());
 app.use(cookieParser());
 
