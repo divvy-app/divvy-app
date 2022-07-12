@@ -19,11 +19,7 @@ const ERROR_TEMPLATE = Object.freeze({
 
 // Load baseline app and external middleware
 const app = express();
-<<<<<<< HEAD
-app.use('/assets', express.static(path.join(__dirname, '../client/assets')));
-=======
 app.use("/assets", express.static(path.join(__dirname, "../client/assets")));
->>>>>>> eb47b39f8a64cb76c9fd9412c7d8328a4a973178
 app.use(express.json());
 app.use(cookieParser());
 
@@ -43,15 +39,10 @@ if (process.env.NODE_ENV === "production") {
   app.use('/api', apiRouter);
 }
 
-<<<<<<< HEAD
-// catch-all route handler for any requests to an unknown route
-app.use((req, res) => res.sendStatus(404));
-=======
 //Catch all error handler
 app.use((req, res) => {
   return res.status(404).send("You in the wrong place");
 });
->>>>>>> eb47b39f8a64cb76c9fd9412c7d8328a4a973178
 
 app.use((error, req, res, next) => {
   const formattedError = { ...ERROR_TEMPLATE, ...error };
