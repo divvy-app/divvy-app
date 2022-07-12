@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 const path = require("path");
 
+const apiRouter = require('./routes/api');
+
 // Define runtime constants
 const PORT_NUMBER = 3000;
 const ERROR_TEMPLATE = Object.freeze({
@@ -26,6 +28,7 @@ if (process.env.NODE_ENV === "production") {
     const indexFile = path.join(__dirname, "../client/index.html");
     return res.status(200).sendFile(indexFile);
   });
+  app.use('/api', apiRouter);
 }
 
 // catch-all route handler for any requests to an unknown route
