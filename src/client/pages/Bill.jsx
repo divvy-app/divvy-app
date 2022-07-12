@@ -2,13 +2,17 @@ import React from 'react';
 import '../styles/bill.css'
 
 function Bill({props}) {
-  console.log(props)
- 
+  
+  const items = [];
+  for (let i = 0; i < props.cost.length; i++){
+    items.push(<div>{props.cost[i].title}: {props.cost[i].price}</div>)
+  }
     return(
       <div className='bill'>
-          <div>Bill#: {props.billID}</div>
-          <div>{props.item[0]}</div>
-          <div>{props.item[1]}</div>
+          <button onClick={()=>console.log('lalala')}>X</button>
+          <div>Bill#: {props.title}</div>
+          
+          <div>{items}</div>
           <div>My Total: {props.myTotal}</div>
       </div>
  

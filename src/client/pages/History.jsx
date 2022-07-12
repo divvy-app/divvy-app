@@ -7,15 +7,14 @@ import '../styles/history.css';
 const History = () => {
 
   // how is the data going to structure? 
-  // bill/cost/myTotal???
 
   const fakeDate = [
-    {billID: 123, item: [['rent', 3000], ['water', 200]], myTotal: 3200},
-    {billID: 456, item: [['restaurant', 200], ['pasta', 40]], myTotal: 120},
-    {billID: 456, item: [['restaurant', 200], ['pasta', 40]], myTotal: 120},
-    {billID: 456, item: [['restaurant', 200], ['pasta', 40]], myTotal: 120},
-    {billID: 456, item: [['restaurant', 200], ['pasta', 40]], myTotal: 120},
-    {billID: 456, item: [['restaurant', 200], ['pasta', 40]], myTotal: 120}
+    {title: 123, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 3200},
+    {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
+    {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
+    {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
+    {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
+    {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120}
   ];
   
     axios.get('/history')
