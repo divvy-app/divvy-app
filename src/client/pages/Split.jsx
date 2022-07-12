@@ -1,5 +1,4 @@
 import React from "react";
-import image from "../images/flower2.jpeg"
 
 // includes JSX
 const Split = () => {
@@ -12,7 +11,7 @@ const Split = () => {
       <div>Total: $<input/></div>
       <div>Number of Friends: <input/></div>
       <button className="login-form-btn" type="submit">Split</button>
-      <img src={image}></img>
+      <img src=""></img>
       </form>
       </div>
     </div>

@@ -6,17 +6,17 @@
 import React from "react";
 import "./style.css";
 import { Routes, Route, Link } from "react-router-dom"
-import Landing from "./pages/Landing";
-import Login from "./pages/Login";
-import History from "./pages/History";
-import Split from "./pages/Split";
-import Logo from "./images/flower2.jpeg";
+import Landing from "./pages/Landing.jsx";
+import Login from "./pages/Login.jsx";
+import History from "./pages/History.jsx";
+import Split from "./pages/Split.jsx";
+// import Logo from "./images/logo.png";
 
 // includes JSX
 const App = () => (
   <div>
     <nav className="navbar">
-      <img className="navbar-logo" src="./images/flower2.jpeg" alt="DIV/VY" />
+      <img className="navbar-logo" src={"/assets/images/logo.png"} alt="DIV/VY" />
       <h1>DIV/VY</h1>
       <div className="navbar-links">
         <Link className="navbar-link" to="/"> Home </Link>
