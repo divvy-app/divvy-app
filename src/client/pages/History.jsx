@@ -2,13 +2,15 @@ import React from "react";
 import Bill from './Bill';
 import axios from 'axios';
 import '../styles/history.css';
+import { useDispatch, useSelector } from "react-redux";
+import { loadingBills } from "../redux/billSlice";
 
 // includes JSX
 const History = () => {
 
   // how is the data going to structure? 
 
-  const fakeDate = [
+  const fakeData = [
     {title: 123, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 3200},
     {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
     {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
@@ -16,8 +18,11 @@ const History = () => {
     {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
     {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120}
   ];
-  
-    axios.get('/history')
+    const dispatch = useDispatch();
+    const { bill } = useSelector((state)=> state.bill);
+    console.log('bill',bill);
+
+    axios.get('/billHistory')
     .then(function (response) {
       // handle success
 
@@ -36,14 +41,19 @@ const History = () => {
 
 
   let bills = [];
-    for (let i = 0; i < fakeDate.length; i++){
-      bills.push(<Bill props={fakeDate[i]} />)
+    for (let i = 0; i < fakeData.length; i++){
+      bills.push(<Bill props={fakeData[i]} />)
     }
   
+  function test(){
+    dispatch(loadingBills(fakeData));
+    console.log('bills',bills);
+  }  
   return (
 
   <div className="history">
     {bills}
+  <div><button onClick={()=> test()}>test</button></div>
   </div>
   )
 };

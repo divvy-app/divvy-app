@@ -8,7 +8,7 @@ export const billSlice = createSlice({
   name: 'bill',
   initialState,
   reducers: {
-    loadingBill: (state, action) => {
+    loadingBills: (state, action) => {
       state.value = {...action.payload};
     },
     deleteBill: (state, action) => {
@@ -18,6 +18,6 @@ export const billSlice = createSlice({
 })
 
 
-export const { deleteBill, loadingBill } = billSlice.actions
+export const { deleteBill, loadingBills } = billSlice.actions
 
 export default billSlice.reducer
