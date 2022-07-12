@@ -1,6 +1,7 @@
 import React from "react";
 import Bill from './Bill';
 import axios from 'axios';
+import '../styles/history.css';
 
 // includes JSX
 const History = () => {
@@ -10,7 +11,12 @@ const History = () => {
 
   const fakeDate = [
     {billID: 123, item: [['rent', 3000], ['water', 200]], myTotal: 3200},
-    {billID: 456, item: [['restaurant', 200], ['pasta', 40]], myTotal: 120}];
+    {billID: 456, item: [['restaurant', 200], ['pasta', 40]], myTotal: 120},
+    {billID: 456, item: [['restaurant', 200], ['pasta', 40]], myTotal: 120},
+    {billID: 456, item: [['restaurant', 200], ['pasta', 40]], myTotal: 120},
+    {billID: 456, item: [['restaurant', 200], ['pasta', 40]], myTotal: 120},
+    {billID: 456, item: [['restaurant', 200], ['pasta', 40]], myTotal: 120}
+  ];
   
     axios.get('/history')
     .then(function (response) {
@@ -37,8 +43,8 @@ const History = () => {
   
   return (
 
-  <div>
-    <div>{bills}</div>
+  <div className="history">
+    {bills}
   </div>
   )
 };
