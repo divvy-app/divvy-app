@@ -21,9 +21,8 @@ module.exports = {
     hot: true,
     compress: true,
     port: 8080,
-    historyApiFallback: true,
     proxy: {
-      "/api/**": {
+      "/user/**": {
         target: "http://localhost:3000/",
         secure: false,
       },

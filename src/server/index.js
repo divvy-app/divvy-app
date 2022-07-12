@@ -6,6 +6,9 @@ const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 
+//Importing routers
+const userRouter = require("./routes/userRouter");
+
 // Define runtime constants
 const PORT_NUMBER = 3000;
 const ERROR_TEMPLATE = Object.freeze({
@@ -22,6 +25,13 @@ app.use(express.static(path.resolve(__dirname, "../../dist")));
 app.use(express.json());
 app.use(cookieParser());
 
+//Using Router to modularize requests
+app.use("/user", userRouter);
+
+app.get("/callback", (req, res) => {
+  return res.status(200).send("It worked!");
+});
+
 // Rest of file defines middleware for custom API endpoints
 if (process.env.NODE_ENV === "production") {
   app.get("/", (req, res) => {
@@ -29,6 +39,11 @@ if (process.env.NODE_ENV === "production") {
     return res.status(200).sendFile(indexFile);
   });
 }
+
+//Catch all error handler
+app.use((req, res) => {
+  return res.status(404).send("You in the wrong place");
+});
 
 app.use((error, req, res, next) => {
   const formattedError = { ...ERROR_TEMPLATE, ...error };
