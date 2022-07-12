@@ -1,15 +1,17 @@
 const path = require("path");
-const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: process.env.NODE_ENV || "development",
   entry: "./src/client/index.js",
+  mode: process.env.NODE_ENV || "development",
+
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
-    publicPath: "/dist",
   },
+
+  resolve: { extensions: [".js", ".jsx", ".ts", ".tsx"] },
+
   devServer: {
     host: "localhost",
     static: {
@@ -31,21 +33,27 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/i,
+        test: /\.[jt]sx?$/i,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-typescript",
+            ],
           },
         },
       },
+
       {
         test: /\.(?:s?c|sa)ss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+
       {
-        test: /\.(?:png|svg|jpg|gif)$/,
+        test: /\.(?:png|svg|jpe?g|gif)$/,
         use: ["file-loader", "url-loader"],
       },
     ],
