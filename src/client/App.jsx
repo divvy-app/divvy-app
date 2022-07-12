@@ -16,16 +16,12 @@ import Split from "./pages/Split.jsx";
 const App = () => (
   <div>
     <nav className="navbar">
-<<<<<<< HEAD
-      <img className="navbar-logo" src={"/assets/images/logo.png"} alt="DIV/VY" />
-=======
       <img
         className="navbar-logo"
         src={"/assets/images/logo.png"}
         alt="DIV/VY"
       />
       <h1>DIV/VY</h1>
->>>>>>> d3ec08cfc3f0e4d2ae39a28ea37aeadf6568f09a
       <div className="navbar-links">
         <Link className="navbar-link" to="/">
           {" "}
@@ -46,18 +42,11 @@ const App = () => (
       </div>
     </nav>
     <Routes>
-<<<<<<< HEAD
-      <Route path="/*" element={<Landing />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/split" element={<Split />} />
-      <Route path="/history" element={<History />} />
-=======
       <Route path="/*" element={ <Landing /> }/> 
       <Route path="/login" element={ <Login /> }/>
       <Route path="/signup" element={ <Signup /> }/>
       <Route path="/split" element={ <Split /> }/>
       <Route path="/history" element={ <History /> }/>
->>>>>>> 2bfb9b7fd7558b34a5df8be0693ac5bf5a5984ba
     </Routes>
   </div>
 );
