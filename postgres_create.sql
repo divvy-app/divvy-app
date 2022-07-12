@@ -16,7 +16,8 @@ SET row_security = off;
 
 CREATE TABLE public.user (
 	"_id" serial NOT NULL,
-	"username" varchar NOT NULL,
+	"username" varchar NOT NULL UNIQUE,
+  "email" varchar NOT NULL UNIQUE,
 	"password" varchar NOT NULL,
 	CONSTRAINT "user_pk" PRIMARY KEY ("_id")
 ) WITH (
@@ -26,6 +27,7 @@ CREATE TABLE public.user (
 CREATE TABLE  public.bill (
 	"_id" serial NOT NULL,
   "title" varchar NOT NULL,
+  "totalCost" float NOT NULL,
 	"numSplit" integer NOT NULL,
 	"userCost" float NOT NULL,
 	"user_id" bigint NOT NULL,

@@ -8,6 +8,7 @@ import "./style.css";
 import { Routes, Route, Link } from "react-router-dom";
 import Landing from "./pages/Landing.jsx";
 import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
 import History from "./pages/History.jsx";
 import Split from "./pages/Split.jsx";
 
@@ -45,10 +46,18 @@ const App = () => (
       </div>
     </nav>
     <Routes>
+<<<<<<< HEAD
       <Route path="/*" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/split" element={<Split />} />
       <Route path="/history" element={<History />} />
+=======
+      <Route path="/*" element={ <Landing /> }/> 
+      <Route path="/login" element={ <Login /> }/>
+      <Route path="/signup" element={ <Signup /> }/>
+      <Route path="/split" element={ <Split /> }/>
+      <Route path="/history" element={ <History /> }/>
+>>>>>>> 2bfb9b7fd7558b34a5df8be0693ac5bf5a5984ba
     </Routes>
   </div>
 );
