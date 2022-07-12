@@ -10,13 +10,13 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import History from "./pages/History";
 import Split from "./pages/Split";
-import Logo from "./images/logo.png";
+import Logo from "./images/flower2.jpeg";
 
 // includes JSX
 const App = () => (
   <div>
     <nav className="navbar">
-      <img className="navbar-logo" src={Logo} alt="DIV/VY" />
+      <img className="navbar-logo" src="./images/flower2.jpeg" alt="DIV/VY" />
       <h1>DIV/VY</h1>
       <div className="navbar-links">
         <Link className="navbar-link" to="/"> Home </Link>
