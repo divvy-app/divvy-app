@@ -7,26 +7,26 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, "dist"),
-    publicPath: '/',
+    publicPath: "/",
     filename: "bundle.js",
   },
 
   resolve: { extensions: [".js", ".jsx", ".ts", ".tsx"] },
 
   devServer: {
-    host: 'localhost',
+    host: "localhost",
     port: 8080,
     // match the output path
     static: {
-      directory: path.resolve(__dirname, 'dist'),
+      directory: path.resolve(__dirname, "dist"),
       // match the output 'publicPath'
-      publicPath: '/',
+      publicPath: "/",
     },
     // enable HMR on the devServer
     hot: true,
     // fallback to root for other urls
     historyApiFallback: true,
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    headers: { "Access-Control-Allow-Origin": "*" },
     /**
      * proxy is required in order to make api calls to
      * express server while using hot-reload webpack server
@@ -40,6 +40,14 @@ module.exports = {
       },
       '/assets/**': {
         target: 'http://localhost:3000/',
+        secure: false,
+      },
+      "/assets/**": {
+        target: "http://localhost:3000/",
+        secure: false,
+      },
+      "/user/**": {
+        target: "http://localhost:3000/",
         secure: false,
       },
     },
@@ -75,6 +83,6 @@ module.exports = {
   ],
   resolve: {
     // Enable importing JS / JSX files without specifying their extension
-    extensions: ['.js', '.jsx'],
+    extensions: [".js", ".jsx"],
   },
 };

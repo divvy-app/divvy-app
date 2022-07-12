@@ -5,6 +5,9 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 const path = require("path");
 
+const apiRouter = require('./routes/api');
+const userRouter = require("./routes/userRouter");
+
 // Define runtime constants
 const PORT_NUMBER = 3000;
 const ERROR_TEMPLATE = Object.freeze({
@@ -16,9 +19,20 @@ const ERROR_TEMPLATE = Object.freeze({
 
 // Load baseline app and external middleware
 const app = express();
+<<<<<<< HEAD
 app.use('/assets', express.static(path.join(__dirname, '../client/assets')));
+=======
+app.use("/assets", express.static(path.join(__dirname, "../client/assets")));
+>>>>>>> eb47b39f8a64cb76c9fd9412c7d8328a4a973178
 app.use(express.json());
 app.use(cookieParser());
+
+//Using Router to modularize requests
+app.use("/user", userRouter);
+
+app.get("/callback", (req, res) => {
+  return res.status(200).send("It worked!");
+});
 
 // Rest of file defines middleware for custom API endpoints
 if (process.env.NODE_ENV === "production") {
@@ -26,10 +40,18 @@ if (process.env.NODE_ENV === "production") {
     const indexFile = path.join(__dirname, "../client/index.html");
     return res.status(200).sendFile(indexFile);
   });
+  app.use('/api', apiRouter);
 }
 
+<<<<<<< HEAD
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.sendStatus(404));
+=======
+//Catch all error handler
+app.use((req, res) => {
+  return res.status(404).send("You in the wrong place");
+});
+>>>>>>> eb47b39f8a64cb76c9fd9412c7d8328a4a973178
 
 app.use((error, req, res, next) => {
   const formattedError = { ...ERROR_TEMPLATE, ...error };
