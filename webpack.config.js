@@ -7,6 +7,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
     filename: "bundle.js",
   },
 
@@ -14,16 +15,34 @@ module.exports = {
 
   devServer: {
     host: "localhost",
-    static: {
-      directory: path.join(__dirname),
-    },
-    open: true,
-    hot: true,
-    compress: true,
     port: 8080,
+    // match the output path
+    static: {
+      directory: path.resolve(__dirname, "dist"),
+      // match the output 'publicPath'
+      publicPath: "/",
+    },
+    // enable HMR on the devServer
+    hot: true,
+    // fallback to root for other urls
     historyApiFallback: true,
+    headers: { "Access-Control-Allow-Origin": "*" },
+    /**
+     * proxy is required in order to make api calls to
+     * express server while using hot-reload webpack server
+     * routes api fetch requests from localhost:8080/api/* (webpack dev server)
+     * to localhost:3000/api/* (where our Express server is running)
+     */
     proxy: {
       "/api/**": {
+        target: "http://localhost:3000/",
+        secure: false,
+      },
+      "/assets/**": {
+        target: "http://localhost:3000/",
+        secure: false,
+      },
+      "/user/**": {
         target: "http://localhost:3000/",
         secure: false,
       },
@@ -51,17 +70,15 @@ module.exports = {
         test: /\.(?:s?c|sa)ss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
-
-      {
-        test: /\.(?:png|svg|jpe?g|gif)$/,
-        use: ["file-loader", "url-loader"],
-      },
     ],
   },
-
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/client/index.html",
     }),
   ],
+  resolve: {
+    // Enable importing JS / JSX files without specifying their extension
+    extensions: [".js", ".jsx"],
+  },
 };

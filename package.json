@@ -2,12 +2,12 @@
   "name": "divvy-app",
   "version": "0.1.0",
   "description": "Div/vy is a new app for simplifying all your cost-splitting needs.",
-  "main": "./src/server/index.js",
+  "main": "src/server/server.js",
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack --config webpack.config.js --mode production",
-    "server-only": "nodemon ./src/server/index.js",
-    "dev": "concurrently \"webpack-dev-server --open --hot\" \"nodemon ./src/server/index.js\"",
+    "server-only": "nodemon ./src/server/server.js",
+    "dev": "concurrently \"webpack-dev-server --open --hot\" \"nodemon ./src/server/server.js\"",
     "test": "jest --verbose"
   },
   "repository": {
@@ -23,12 +23,14 @@
   "homepage": "https://github.com/divvy-app/divvy-app#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
+    "axios": "^0.27.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "pg": "^8.7.3",
     "react": "^18.2.0",
     "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0",
     "redux": "^4.2.0"
   },
   "devDependencies": {
