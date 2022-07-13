@@ -65,7 +65,7 @@ body, html {
 }
 
 .login-form-btn:hover {
-  background-color: #93C572;
+  background-color: red;
   color: white;
 }
 
@@ -93,7 +93,7 @@ body, html {
 }
 
 .split-btn:hover {
-  background-color: #93C572;
+  background-color: red;
   color: white;
 }
 
@@ -169,7 +169,6 @@ body, html {
 }
 
 .landing-container {
-  background-image: url(./assets/images/background.png);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,21 +177,25 @@ body, html {
 
 .landing {
   display: flex;
+  flex-flow: column;
+  align-items: center;
   justify-content:center;
+  font-size: large;
 }
 
 #landing-button {
   margin: 10px;
   width: 12rem;
-  height: 5rem;
+  height: 3rem;
   border: 0.1rem solid black;
+  margin-top: 2rem;
   border-radius: 0.3rem;
   background-color: #E8F1DE;
   font-size: large;
 }
 
 #landing-button:hover {
-  background-color: #93C572;
+  background-color: red;
   color: white;
 }
 
@@ -215,4 +218,13 @@ body, html {
 
 .loginFalse, .signUpFalse {
   color: red;
+}
+
+.landingTitle {
+  font-size: 20rem;
+}
+
+.moto {
+  font-size: 2rem;
+  font-family: monospace;
 }
