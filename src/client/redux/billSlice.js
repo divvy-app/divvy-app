@@ -12,7 +12,7 @@ export const billSlice = createSlice({
       state.allBills = action.payload;
     },
     deleteBill: (state, action) => {
-      state.allBills = state.value.filter(x => x.title != action.payload);
+      state.allBills = state.allBills.filter(x => x._id != action.payload);
     },
   },
 })
