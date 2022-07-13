@@ -4,7 +4,6 @@ import { fireEvent, render } from "@testing-library/react";
 import History from "../src/client/pages/History";
 import { Provider } from "react-redux";
 import { store } from "../src/client/redux/store";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 test("Component is able to manage server responses as they come in", async () => {
   const mock = render(
