@@ -1,5 +1,5 @@
-const clientSecret = "5f8a5b8c20ba50acd83ad6d467220c15939d8d47";
-const clientID = "4d828c754c60a2276cbe";
+const clientSecret = "";
+const clientID = "";
 const axios = require("axios");
 const bcrypt = require("bcrypt");
 const db = require("../models/divvyModels");
@@ -27,23 +27,6 @@ userController.getToken = async (req, res, next) => {
     });
   }
 };
-
-// billController.getUserID = async (req, res, next) => {
-//   const text = `SELECT user._id
-//   FROM user
-//   WHERE user.username = ${req.body};`;
-
-//   await db
-//     .query(text)
-//     .then((response) => {
-//       // console.log('res', response.rows);
-//       res.locals.userID = response.rows;
-//       return next();
-//     })
-//     .catch((err) => {
-//       return next(err);
-//     });
-// };
 
 userController.getUser = async (req, res, next) => {
   const url = "https://api.github.com/user";
@@ -75,7 +58,12 @@ userController.createUser = async (req, res, next) => {
     const createUser = `INSERT INTO "user" (username, email, password) VALUES ($1, $2, $3);`;
     const newUserDetails = [username, email, hashedPassword];
     const data = await db.query(createUser, newUserDetails);
-    console.log("Created a new user - username: ",username, "email:", email, "password: ",password);
+    // console.log("Data after signing up new user:", data.rows);
+    const findUserId = `SELECT _id FROM "user" WHERE "email" = '${email}';`;
+    const data2 = await db.query(findUserId);
+    const userId = await data2.rows[0]._id;
+    // console.log(userId);
+    res.locals.id = userId;
     return next();
   } catch (err) {
     return next({
@@ -89,11 +77,14 @@ userController.createUser = async (req, res, next) => {
 userController.verifyUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const findUserPassword = `SELECT password FROM "user" WHERE "email" = '${email}';`;
+    const findUserPassword = `SELECT * FROM "user" WHERE "email" = '${email}';`;
     const data = await db.query(findUserPassword);
     const userPassword = await data.rows[0].password;
+    const userId = await data.rows[0]._id;
     const passwordVerification = await bcrypt.compare(password, userPassword);
     res.locals.verified = passwordVerification;
+    res.locals.id = userId;
+    // console.log(res.locals.verified, res.locals.id);
     return next();
   } catch (err) {
     return next({

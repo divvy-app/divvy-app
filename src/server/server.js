@@ -4,7 +4,7 @@
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const path = require("path");
-const cors = require('cors');
+const cors = require("cors");
 
 const billRouter = require("./routes/billRouter");
 const userRouter = require("./routes/userRouter");
@@ -22,6 +22,7 @@ const ERROR_TEMPLATE = Object.freeze({
 const app = express();
 app.use("/assets", express.static(path.join(__dirname, "../client/assets")));
 app.use(express.json());
+app.use(express.urlencoded());
 app.use(cookieParser());
 app.use(cors());
 
