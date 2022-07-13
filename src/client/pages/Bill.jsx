@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/bill.css'
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBill } from "../redux/billSlice";
-
+import axios from 'axios';
 
 function Bill({props}) {
   const dispatch = useDispatch();
@@ -14,14 +14,23 @@ function Bill({props}) {
     items.push(<div>{props.cost[i].title}: {props.cost[i].price}</div>)
   }
 
-  function test(){
+  function deleteThisBill(){
     dispatch(deleteBill(props._id));
-    console.log(allBills)
+    console.log(allBills);
+    // axios.post('/deleteBill', {
+    //   id: props._id
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
 
   }
     return(
       <div className='bill'>
-          <button onClick={()=>test()}>X</button>
+          <button onClick={()=>deleteThisBill()}>X</button>
           <div>id#: {props._id}</div>
           <div>Bill#: {props.title}</div>
           
