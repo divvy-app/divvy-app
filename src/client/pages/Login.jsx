@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setEmail } from "../redux/userSlice";
+import { useNavigate } from "react-router-dom";
 
 // includes JSX
 const Login = () => {
   const [login, setLogin] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const goGithub = () => {
     window.location.href =
@@ -15,6 +20,7 @@ const Login = () => {
     let formdata = new FormData(form);
     let inputEmail = formdata.get("email");
     let inputPass = formdata.get("password");
+    dispatch(setEmail(inputEmail));
 
     if (inputEmail && inputPass) {
       console.log("this is the email,", inputEmail);
@@ -28,9 +34,19 @@ const Login = () => {
 
     const url = `http://localhost:3000/user/login`;
     fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: data,
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: data
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.err) setLogin("Login Unsuccessful, Try Again")
+      else if (res === true) {
+        navigate('/split')
+      }
+    })
+    .catch(err => {
+      setLogin("Login Unsuccessful, Try Again")
     })
       .then((res) => res.json())
       .then((res) => {

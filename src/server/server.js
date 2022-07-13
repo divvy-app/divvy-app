@@ -6,7 +6,7 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 
-// const billRouter = require("./routes/billRouter");
+const billRouter = require("./routes/billRouter");
 const userRouter = require("./routes/userRouter");
 
 // Define runtime constants
@@ -28,7 +28,7 @@ app.use(cors());
 
 //Using Router to modularize requests
 app.use("/user", userRouter);
-// app.use("/bill", billRouter);
+app.use("/bill", billRouter);
 
 app.get("/callback", (req, res) => {
   return res.status(200).send("It worked!");
@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === "production") {
     const indexFile = path.join(__dirname, "../client/index.html");
     return res.status(200).sendFile(indexFile);
   });
-  app.use("/bill", billRouter);
+  //app.use("/bill", billRouter);
 }
 
 // Set up catch-all error handler for unrecognized endpoints
