@@ -75,7 +75,7 @@ userController.createUser = async (req, res, next) => {
     const createUser = `INSERT INTO "user" (username, email, password) VALUES ($1, $2, $3);`;
     const newUserDetails = [username, email, hashedPassword];
     const data = await db.query(createUser, newUserDetails);
-    console.log("Created a new user");
+    console.log("Created a new user - username: ",username, "email:", email, "password: ",password);
     return next();
   } catch (err) {
     return next({
