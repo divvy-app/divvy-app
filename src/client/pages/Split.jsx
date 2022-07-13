@@ -3,60 +3,40 @@ import React, {useState} from "react";
 // includes JSX
 const Split = () => {
   const [split, setSplit] = useState("");
-
-/*   window.onload=function() {
+  
+  function submit (e) {
     let form = document.querySelector(".split-form");
-    form.addEventListener("click", function (e) {
-      e.preventDefault() // This prevents the window from reloading
-      let formdata = new FormData(this);
-      let expense = formdata.get("expense");
-      let total = parseFloat(formdata.get("total"));
-      let people = parseFloat(formdata.get("people"));
-      let split = (total/people).toFixed(2);
-      if (expense && total && people) {
-        console.log("this is the expense name,", expense);
-        console.log("this is the total", total);
-        console.log("this is the split num of people", people);
-        console.log("Split: ", split)
-        setSplit(`$${split}/person`)
-      }
+    e.preventDefault() // This prevents the window from reloading
+    let formdata = new FormData(form);
+    let expense = formdata.get("expense");
+    let total = parseFloat(formdata.get("total"));
+    let people = parseFloat(formdata.get("people"));
+    let split = (total/people).toFixed(2);
+    
+    if (expense && total && people) {
+      console.log("this is the expense name,", expense);
+      console.log("this is the total", total);
+      console.log("this is the split num of people", people);
+      console.log("Split: ", split)
+      setSplit(`$${split}/person`)
+    }
+    
+/*     const data = JSON.stringify({
+      email: inputEmail,
+      password: inputPass,
+    })
 
-/*       const data = JSON.stringify({
-        email: inputEmail,
-        password: inputPass,
-      })
-
-      const url = `http://localhost:3000/api/addBill`
-        fetch(url, {
+    const url = `http://localhost:3000/api/addBill`
+    fetch(url, {
             method: "GET",
             headers: {'Content-Type': 'application/json'},
             body: data
-        })
-        .then(res => res.json())
-        .then(res => {
-            if (res.err) setLogin("Login Unsuccessful")
-            else window.location.href="http://localhost:8080/history"; 
-        }) */
-  //}); 
-
-    function submit () {
-      //console.log("this is the expense name,");
-      let form = document.querySelector(".split-form");
-      form.addEventListener("click", function (e) {
-        e.preventDefault() // This prevents the window from reloading
-        let formdata = new FormData(this);
-        let expense = formdata.get("expense");
-        let total = parseFloat(formdata.get("total"));
-        let people = parseFloat(formdata.get("people"));
-        let split = (total/people).toFixed(2);
-        if (expense && total && people) {
-          console.log("this is the expense name,", expense);
-          console.log("this is the total", total);
-          console.log("this is the split num of people", people);
-          console.log("Split: ", split)
-          setSplit(`$${split}/person`)
-        }
-    });
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.err) setLogin("Login Unsuccessful")
+      else window.location.href="http://localhost:8080/history"; 
+    })  */
   }
 
   return (

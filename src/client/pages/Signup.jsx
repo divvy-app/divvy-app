@@ -2,20 +2,20 @@ import React, {useState} from "react";
 
 const Signup = () => {
   const [signup, setSignup] = useState("");
-
-  window.onload=function() {
+  
+  function submit (e) {
     let form = document.querySelector(".login-form");
-    form.addEventListener("submit", function (e) {
-      e.preventDefault() // This prevents the window from reloading
-      let formdata = new FormData(this);
-      let inputUsername = formdata.get("username");
-      let inputEmail = formdata.get("email");
-      let inputPass = formdata.get("password");
-      if (inputEmail && inputPass && inputUsername) {
-        console.log("this is the username,", inputUsername);
-        console.log("this is the email,", inputEmail);
-        console.log("this is the password", inputPass);
-      }
+    e.preventDefault() // This prevents the window from reloading
+    let formdata = new FormData(form);
+
+    let inputUsername = formdata.get("username");
+    let inputEmail = formdata.get("email");
+    let inputPass = formdata.get("password");
+    if (inputEmail && inputPass && inputUsername) {
+      console.log("this is the username,", inputUsername);
+      console.log("this is the email,", inputEmail);
+      console.log("this is the password", inputPass);
+    }
 
 /*      const data = JSON.stringify({
       username: inputUsername,
@@ -34,9 +34,8 @@ const Signup = () => {
             if (res.err) setSignup("Unsuccessful Sign-up")
             else window.location.href="http://localhost:8080/history"; 
         })  */
-    });
-  }
-    
+    }
+
   return (
   <div>
     <div className="login-container">
@@ -55,7 +54,7 @@ const Signup = () => {
     <div><input id="password" type="text" name="password" className="pass-label" placeholder="Enter your password"/></div>
     </div>
     <div className="form-input-btn">
-      <button className="login-form-btn" type="submit">Sign Up</button>
+      <button className="login-form-btn" type="button" onClick={submit}>Sign Up</button>
     </div>
     <div className="signUpFalse">{signup}</div>
     </form>

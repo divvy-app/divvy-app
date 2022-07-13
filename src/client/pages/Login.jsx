@@ -9,18 +9,19 @@ const Login = () => {
       "https://github.com/login/oauth/authorize?client_id=4d828c754c60a2276cbe";
   };
 
-  window.onload=function() {
+  function submit (e) {
     let form = document.querySelector(".login-form");
-    form.addEventListener("submit", function (e) {
-      e.preventDefault() // This prevents the window from reloading
-      let formdata = new FormData(this);
-      let inputEmail = formdata.get("email");
-      let inputPass = formdata.get("password");
-      if (inputEmail && inputPass) {
-        console.log("this is the email,", inputEmail);
-        console.log("this is the password", inputPass);
-      }
+    e.preventDefault() // This prevents the window from reloading
+    let formdata = new FormData(form);
+    let inputEmail = formdata.get("email");
+    let inputPass = formdata.get("password");
 
+    if (inputEmail && inputPass) {
+      console.log("this is the email,", inputEmail);
+      console.log("this is the password", inputPass);
+    }
+    
+    
 /*       const data = JSON.stringify({
         email: inputEmail,
         password: inputPass,
@@ -37,7 +38,6 @@ const Login = () => {
             if (res.err) setLogin("Login Unsuccessful")
             else window.location.href="http://localhost:8080/history"; 
         }) */
-    });
   }
 
   return (
@@ -56,7 +56,7 @@ const Login = () => {
           <div className="forgot">Forgot your password?</div>
         </div>
         <div className="form-input-btn">
-          <button className="login-form-btn" type="submit">Login</button>
+          <button className="login-form-btn" type="button" onClick={submit}>Login</button>
         </div>
         <div className="loginFalse">{login}</div>
         <div className="signup">Don't have an account? <a href="http://localhost:8080/signup">Sign Up Here</a></div>
