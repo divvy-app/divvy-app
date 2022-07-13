@@ -24,12 +24,13 @@ const App = () => (
         <Link className="navbar-link" to="/history"> Bill History </Link>
       </div>
     </nav>
+
     <Routes>
-      <Route path="/*" element={ <Landing /> }/> 
-      <Route path="/login" element={ <Login /> }/>
-      <Route path="/signup" element={ <Signup /> }/>
-      <Route path="/split" element={ <Split /> }/>
-      <Route path="/history" element={ <History /> }/>
+      <Route path="/*" element={<Landing />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/split" element={<Split />} />
+      <Route path="/history" element={<History />} />
     </Routes>
   </div>
 );

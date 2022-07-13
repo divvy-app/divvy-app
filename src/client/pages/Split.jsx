@@ -57,7 +57,7 @@ const Split = () => {
       </form>
       </div>
     </div>
-  )
+  );
 };
 
 export default Split;

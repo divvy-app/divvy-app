@@ -1,20 +1,20 @@
-const db = require('../models/divvyModels');
+const db = require("../models/divvyModels");
 
 const divvyController = {};
 
 divvyController.getUserID = async (req, res, next) => {
-  const text = `SELECT 
-  user._id
+  const text = `SELECT user._id
   FROM user 
   WHERE user.username = ${req.body};`;
 
-
-  await db.query(text)
-    .then ((response) => {
-      // console.log('res', response.rows); 
+  await db
+    .query(text)
+    .then((response) => {
+      // console.log('res', response.rows);
       res.locals.userID = response.rows;
       return next();
-    }).catch (err => {
+    })
+    .catch((err) => {
       return next(err);
     });
 };
@@ -41,28 +41,31 @@ divvyController.getBillHistory =  async (req, res, next) => {
   FROM bill 
   LEFT JOIN user ON bill.user_id = ${res.locals.userID};`;
 
-
-  await db.query(text)
-    .then ((response) => {
-      // console.log('res', response.rows); 
+  await db
+    .query(text)
+    .then((response) => {
+      // console.log('res', response.rows);
       res.locals.billhistory = response.rows;
       return next();
-    }).catch (err => {
+    })
+    .catch((err) => {
       return next(err);
     });
 };
 
 divvyController.addBill = async (req, res, next) => {
-  console.log('req.body', req.body);
+  console.log("req.body", req.body);
   const body = req.body;
   const text = `INSERT INTO bill(title, totalCost, numSplit, userCost, user_id) VALUES ('${bill.title}', '${bill.totalCost}', ${bill.numSplit}, '${bill.userCost}', ${res.locals.userID});`;
-  
+
   console.log(text);
 
-  await db.query(text)
-    .then (() => {
+  await db
+    .query(text)
+    .then(() => {
       return next();
-    }).catch (err => {
+    })
+    .catch((err) => {
       return next(err);
     });
 };
