@@ -1,8 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import billReducer from './billSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import billReducer from "./billSlice";
 
 export const store = configureStore({
   reducer: {
     bill: billReducer,
   },
-})
+});
+
+export const dispatch = store.dispatch;
