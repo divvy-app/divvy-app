@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Bill from './Bill';
 import axios from 'axios';
 import '../styles/history.css';
@@ -21,23 +21,25 @@ const History = () => {
     const dispatch = useDispatch();
     const { allBills } = useSelector((state)=> state.bill);
     
+    // useEffect(()=>{
+    //   axios.get('/billHistory')
+    //   .then(function (response) {
+    //     // handle success
+  
+    //     // console.log(response);
+    //     // let bills = [];
+    //     // for (let i = 0; i < response.length; i++){
+    //     //   bills.push(<Bill props={response[i]} />)
+    //     // }
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   })
+    //   .then(function () {
+    //     // always executed
+    //   });
+    // },[]);
 
-    axios.get('/billHistory')
-    .then(function (response) {
-      // handle success
-
-      // console.log(response);
-      // let bills = [];
-      // for (let i = 0; i < response.length; i++){
-      //   bills.push(<Bill props={response[i]} />)
-      // }
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-    .then(function () {
-      // always executed
-    });
 
 
   let bills = []; 
