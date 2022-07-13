@@ -10,6 +10,7 @@ function Bill({props}) {
     return(
       <div className='bill'>
           <button onClick={()=>console.log('lalala')}>X</button>
+          <div>id#: {props._id}</div>
           <div>Bill#: {props.title}</div>
           
           <div>{items}</div>

@@ -11,16 +11,16 @@ const History = () => {
   // how is the data going to structure? 
 
   const fakeData = [
-    {title: 123, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 3200},
-    {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
-    {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
-    {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
-    {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
-    {title: 456, cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120}
+    {_id: 0, title: 'Codesmith tuition', cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 3200},
+    {_id: 1, title: 'Korean BBQ', cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
+    {_id: 2, title: 'DMT', cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
+    {_id: 3, title: 'Asado Negro', cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
+    {_id: 4, title: 'Vet bill', cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120},
+    {_id: 5, title: 'whatelse can this be', cost: [{ title: 'abc', price: 300},{ title: 'def', price: 600}], myTotal: 120}
   ];
     const dispatch = useDispatch();
-    const { bill } = useSelector((state)=> state.bill);
-    console.log('bill',bill);
+    const { allBills } = useSelector((state)=> state.bill);
+    
 
     axios.get('/billHistory')
     .then(function (response) {
@@ -40,14 +40,16 @@ const History = () => {
     });
 
 
-  let bills = [];
-    for (let i = 0; i < fakeData.length; i++){
-      bills.push(<Bill props={fakeData[i]} />)
+  let bills = []; 
+  if(allBills.length){
+    for (let i = 0; i < allBills.length; i++){
+      bills.push(<Bill props={allBills[i]} />)
     }
+  }
   
   function test(){
     dispatch(loadingBills(fakeData));
-    console.log('bills',bills);
+    console.log('bill',allBills);
   }  
   return (
 
