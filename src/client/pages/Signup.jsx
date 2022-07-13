@@ -29,10 +29,14 @@ const Signup = () => {
             headers: {'Content-Type': 'application/json'},
             body: data
         })
-        .then(res => res.json())
         .then(res => {
-          if (res.err) setSignup("Unsuccessful Sign-up")
-          else window.location.href="http://localhost:8080/history"; 
+          if (res.status === 200) {
+            window.location.href="http://localhost:8080/history";
+            //setSignup("Successful Sign-up") 
+          }
+          else if (res.status === 400) {
+            setSignup("Un-Successful Sign-up") 
+          }
         })
         .catch(err => {
           setSignup("Unsuccessful Sign-up")
