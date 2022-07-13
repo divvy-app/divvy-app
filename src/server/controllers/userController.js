@@ -71,6 +71,7 @@ userController.getUser = async (req, res, next) => {
 userController.createUser = async (req, res, next) => {
   try {
     const { username, password, email } = req.body;
+    console.log("Request Body:", username, password, email);
     const hashedPassword = await bcrypt.hash(password, 10);
     const createUser = `INSERT INTO "user" (user, email, password) VALUES ($1, $2, $3);`;
     const newUserDetails = [username, email, hashedPassword];

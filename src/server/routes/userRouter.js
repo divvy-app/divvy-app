@@ -12,7 +12,7 @@ router.get(
 );
 
 router.post("/signUp", userController.createUser, (req, res) => {
-  return res.sendStatus(200);
+  return res.status(200).send("Signed Up");
 });
 
 router.post("/login", userController.verifyUser, (req, res) => {
