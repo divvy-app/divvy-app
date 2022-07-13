@@ -17,23 +17,26 @@ const Signup = () => {
       console.log("this is the password", inputPass);
     }
 
-/*      const data = JSON.stringify({
+     const data = JSON.stringify({
       username: inputUsername,
-        email: inputEmail,
-        password: inputPass,
-      })
+      email: inputEmail,
+      password: inputPass,
+    })
 
-      const url = `http://localhost:3000/api/addUser`
+      const url = `http://localhost:3000/user/signUp`
         fetch(url, {
-            method: "GET",
+            method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: data
         })
         .then(res => res.json())
         .then(res => {
-            if (res.err) setSignup("Unsuccessful Sign-up")
-            else window.location.href="http://localhost:8080/history"; 
-        })  */
+          if (res.err) setSignup("Unsuccessful Sign-up")
+          else window.location.href="http://localhost:8080/history"; 
+        })
+        .catch(err => {
+          setSignup("Unsuccessful Sign-up")
+        })
     }
 
   return (

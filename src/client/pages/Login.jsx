@@ -21,23 +21,26 @@ const Login = () => {
       console.log("this is the password", inputPass);
     }
     
-    
-/*       const data = JSON.stringify({
+    const data = JSON.stringify({
         email: inputEmail,
         password: inputPass,
       })
-
-      const url = `http://localhost:3000/api/getUser`
-        fetch(url, {
-            method: "GET",
+      
+    const url = `http://localhost:3000/user/login`
+    fetch(url, {
+            method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: data
-        })
-        .then(res => res.json())
-        .then(res => {
-            if (res.err) setLogin("Login Unsuccessful")
-            else window.location.href="http://localhost:8080/history"; 
-        }) */
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.err) setLogin("Login Unsuccessful")
+      console.log("response: ",res);
+      //window.location.href="http://localhost:8080/history"; 
+    })
+    .catch(err => {
+      setLogin("Login Unsuccessful")
+    })
   }
 
   return (
@@ -52,7 +55,7 @@ const Login = () => {
           </div>
         <div className="input-login">
           <label htmlFor="password">Password </label>
-          <div><input id="password" type="text" name="password" className="pass-label" placeholder="Enter your password"/></div>
+          <div><input id="password" type="password" name="password" className="pass-label" placeholder="Enter your password"/></div>
           <div className="forgot">Forgot your password?</div>
         </div>
         <div className="form-input-btn">

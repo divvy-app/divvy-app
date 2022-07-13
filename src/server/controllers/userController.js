@@ -88,8 +88,8 @@ userController.createUser = async (req, res, next) => {
 
 userController.verifyUser = async (req, res, next) => {
   try {
-    const { username, password } = req.body;
-    const findUserPassword = `SELECT password FROM "user" WHERE "username" = '${username}';`;
+    const { email, password } = req.body;
+    const findUserPassword = `SELECT password FROM "user" WHERE "email" = '${email}';`;
     const data = await db.query(findUserPassword);
     const userPassword = await data.rows[0].password;
     const passwordVerification = await bcrypt.compare(password, userPassword);
