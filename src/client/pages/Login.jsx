@@ -35,11 +35,14 @@ const Login = () => {
     .then(res => res.json())
     .then(res => {
       if (res.err) setLogin("Login Unsuccessful")
-      console.log("response: ",res);
-      //window.location.href="http://localhost:8080/history"; 
+      else if (res === true) {
+        //setLogin("Login Successful, Try Again")
+        window.location.href="http://localhost:8080/history"; 
+      }
+      //console.log("response: ",res);
     })
     .catch(err => {
-      setLogin("Login Unsuccessful")
+      setLogin("Login Unsuccessful, Try Again")
     })
   }
 

@@ -72,9 +72,10 @@ userController.createUser = async (req, res, next) => {
   try {
     const { username, password, email } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
-    const createUser = `INSERT INTO "user" (user, email, password) VALUES ($1, $2, $3);`;
+    const createUser = `INSERT INTO "user" (username, email, password) VALUES ($1, $2, $3);`;
     const newUserDetails = [username, email, hashedPassword];
     const data = await db.query(createUser, newUserDetails);
+    console.log("Created a new user");
     return next();
   } catch (err) {
     return next({

@@ -31,11 +31,12 @@ const Signup = () => {
         })
         .then(res => res.json())
         .then(res => {
-          if (res.err) setSignup("Unsuccessful Sign-up")
-          else window.location.href="http://localhost:8080/history"; 
+          //if (res.err) setSignup("Unsuccessful Sign-up")
+          //setSignup("Successful Sign-up")
+          window.location.href="http://localhost:8080/history"; 
         })
         .catch(err => {
-          setSignup("Unsuccessful Sign-up")
+          //setSignup("Unsuccessful Sign-up")
         })
     }
 
