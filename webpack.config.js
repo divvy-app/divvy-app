@@ -19,12 +19,9 @@ module.exports = {
     // match the output path
     static: {
       directory: path.resolve(__dirname, "dist"),
-      // match the output 'publicPath'
       publicPath: "/",
     },
-    // enable HMR on the devServer
     hot: true,
-    // fallback to root for other urls
     historyApiFallback: true,
     headers: { "Access-Control-Allow-Origin": "*" },
     /**

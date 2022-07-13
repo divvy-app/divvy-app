@@ -19,7 +19,7 @@ divvyController.getUserID = async (req, res, next) => {
     });
 };
 
-divvyController.getBillHistory =  async (req, res, next) => {
+divvyController.getBillHistory = async (req, res, next) => {
   const text = `SELECT 
   bill.title, 
   bill.numSplit, 
