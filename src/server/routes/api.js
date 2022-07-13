@@ -14,4 +14,16 @@ router.post('/bill',
   (req, res) => res.sendStatus(200)
 );
 
+router.get('/allUsers', divvyController.getAllUsers, (req, res) => {
+  res.status(200).json(res.locals.users)
+})
+
+router.get('/getUser', divvyController.getUser, (req, res) => {
+  res.status(200).json(res.locals.user)
+})
+
+router.get('/addUser', divvyController.addUser, (req, res) => {
+  res.sendStatus(200);
+})
+
 module.exports = router;

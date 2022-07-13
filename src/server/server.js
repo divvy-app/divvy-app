@@ -25,6 +25,7 @@ app.use(cookieParser());
 
 //Using Router to modularize requests
 app.use("/user", userRouter);
+app.use('/api', apiRouter);
 
 app.get("/callback", (req, res) => {
   return res.status(200).send("It worked!");
