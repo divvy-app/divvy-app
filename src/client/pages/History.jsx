@@ -60,6 +60,7 @@ const History = () => {
     .then(res => res.json())
     .then(res => {
       console.log("Result from fetch request: ", res);
+      //dispatch(loadingBills(res));
     }) 
 
   }  
