@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/bill.css'
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBill } from "../redux/billSlice";
 import axios from 'axios';

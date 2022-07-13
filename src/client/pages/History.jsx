@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Bill from './Bill';
 import axios from 'axios';
-import '../styles/history.css';
 import { useDispatch, useSelector } from "react-redux";
 import { loadingBills } from "../redux/billSlice";
 
@@ -54,10 +53,13 @@ const History = () => {
     console.log('bill',allBills);
   }  
   return (
-
-  <div className="history">
-    {bills}
-  <div><button onClick={()=> test()}>test</button></div>
+  <div className="historyContainer">
+    <div className="history">
+      {bills}
+      <div>
+        <button onClick={()=> test()}>test</button>
+      </div>
+    </div>
   </div>
   )
 };

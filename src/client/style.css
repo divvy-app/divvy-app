@@ -167,3 +167,48 @@ body, html {
 .moneygif {
   background-color: #e5ebf4;
 }
+
+.landing-container {
+  background-image: url(./assets/images/background.png);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.landing {
+  display: flex;
+  justify-content:center;
+}
+
+#landing-button {
+  margin: 10px;
+  width: 12rem;
+  height: 5rem;
+  border: 0.1rem solid black;
+  border-radius: 0.3rem;
+  background-color: #E8F1DE;
+  font-size: large;
+}
+
+#landing-button:hover {
+  background-color: #93C572;
+  color: white;
+}
+
+.bill {
+  background-color: rgb(194, 198, 197);
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.history {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: rgba(228, 228, 235, 0.405);
+}
+
+.historyContainer {
+  background-image: url(./assets/images/background.png);
+  height: 100vh;
+}
