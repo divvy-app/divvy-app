@@ -11,6 +11,12 @@ router.get(
   }
 );
 
-router.post("/user", user);
+router.post("/signUp", userController.createUser, (req, res) => {
+  return res.sendStatus(200);
+});
+
+router.post("/login", userController.verifyUser, (req, res) => {
+  return res.status(200).send(res.locals.verified);
+});
 
 module.exports = router;

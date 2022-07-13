@@ -28,22 +28,22 @@ userController.getToken = async (req, res, next) => {
   }
 };
 
-billController.getUserID = async (req, res, next) => {
-  const text = `SELECT user._id
-  FROM user 
-  WHERE user.username = ${req.body};`;
+// billController.getUserID = async (req, res, next) => {
+//   const text = `SELECT user._id
+//   FROM user
+//   WHERE user.username = ${req.body};`;
 
-  await db
-    .query(text)
-    .then((response) => {
-      // console.log('res', response.rows);
-      res.locals.userID = response.rows;
-      return next();
-    })
-    .catch((err) => {
-      return next(err);
-    });
-};
+//   await db
+//     .query(text)
+//     .then((response) => {
+//       // console.log('res', response.rows);
+//       res.locals.userID = response.rows;
+//       return next();
+//     })
+//     .catch((err) => {
+//       return next(err);
+//     });
+// };
 
 userController.getUser = async (req, res, next) => {
   const url = "https://api.github.com/user";
