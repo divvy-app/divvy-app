@@ -40,7 +40,7 @@ const Split = () => {
   //}); 
 
     function submit () {
-      console.log("this is the expense name,");
+      //console.log("this is the expense name,");
       let form = document.querySelector(".split-form");
       form.addEventListener("click", function (e) {
         e.preventDefault() // This prevents the window from reloading
