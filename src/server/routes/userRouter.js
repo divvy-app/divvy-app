@@ -28,6 +28,6 @@ router.post("/addBill", userController.getUserID, userController.addBill, (req, 
 })
 
 router.get("/getBills", userController.getBills, (req, res) => {
-  res.status(200).json(res.locals.billhistory);
+  res.status(200).send(res.locals.billhistory);
 })
 module.exports = router;

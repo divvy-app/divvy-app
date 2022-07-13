@@ -50,14 +50,25 @@ const History = () => {
   
   function test(){
     dispatch(loadingBills(fakeData));
-    console.log('bill',allBills);
+    //console.log('bill',allBills);
+
+    const url = `http://localhost:3000/user/getBills`
+    fetch(url, {
+            method: "GET",
+            headers: {'Content-Type': 'application/json'},
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log("Result from fetch request: ", res);
+    }) 
+
   }  
   return (
   <div className="historyContainer">
     <div className="history">
       {bills}
       <div>
-        <button onClick={()=> test()}>test</button>
+        <button className="getBills" onClick={()=> test()}>Get Bills</button>
       </div>
     </div>
   </div>
