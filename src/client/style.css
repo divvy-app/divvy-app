@@ -18,12 +18,6 @@ body, html {
     margin-right: 20px;
 }
 
-.navbar > h1 {
-  font-size: 2rem;
-  align-self: center;
-  padding-left: 15rem;
-}
-
 .login-container {
   background-image: url(./assets/images/background.png);
   display: flex;
@@ -54,14 +48,14 @@ body, html {
   align-items: center;
   justify-content: center;
   font-size: large;
-  height:30rem;
+  height:27rem;
   width:30rem;
   border: 0.1rem solid black;
   background-color: #e5ebf4;
 }
 
 .login-form-btn {
-  margin-top: 5px;
+  margin: 10px;
   width: 80px;
   height: 40px;
   border: 0.1rem solid black;
@@ -151,8 +145,19 @@ body, html {
   margin: 0.3rem;
 }
 
-.github {
-  margin-top: 1rem;
+#githubBtn {
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 11rem;
+  height: 2rem;
+  border: 0.1rem solid black;
+  border-radius: 0.3rem;
+  background-color: black;
+  color:white;
+  font-size: medium; 
 }
 
 .forgot {
@@ -161,4 +166,53 @@ body, html {
 
 .moneygif {
   background-color: #e5ebf4;
+}
+
+.landing-container {
+  background-image: url(./assets/images/background.png);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.landing {
+  display: flex;
+  justify-content:center;
+}
+
+#landing-button {
+  margin: 10px;
+  width: 12rem;
+  height: 5rem;
+  border: 0.1rem solid black;
+  border-radius: 0.3rem;
+  background-color: #E8F1DE;
+  font-size: large;
+}
+
+#landing-button:hover {
+  background-color: #93C572;
+  color: white;
+}
+
+.bill {
+  background-color: rgb(194, 198, 197);
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.history {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: rgba(228, 228, 235, 0.405);
+}
+
+.historyContainer {
+  background-image: url(./assets/images/background.png);
+  height: 100vh;
+}
+
+.loginFalse, .signUpFalse {
+  color: red;
 }

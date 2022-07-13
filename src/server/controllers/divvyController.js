@@ -19,7 +19,20 @@ divvyController.getUserID = async (req, res, next) => {
     });
 };
 
-divvyController.getBillHistory = async (req, res, next) => {
+divvyController.getAllUsers = async (req, res, next) => {
+  const text = `SELECT * FROM user`;
+
+  await db.query(text)
+    .then ((response) => {
+      console.log('res', response.rows); 
+      res.locals.users= response.rows;
+      return next();
+    }).catch (err => {
+      return next(err);
+    });
+};
+
+divvyController.getBillHistory =  async (req, res, next) => {
   const text = `SELECT 
   bill.title, 
   bill.numSplit, 
@@ -56,5 +69,33 @@ divvyController.addBill = async (req, res, next) => {
       return next(err);
     });
 };
+
+divvyController.addUser = async (req, res, next) => {
+  console.log('req.body', req.body);
+  const body = req.body
+  //const text = `INSERT INTO user (user, email, password) VALUES ('${body.user}', '${body.email}', '${body.password}');`;
+  const text = `INSERT INTO user (username) VALUES ('${body.user}');`;
+  console.log(text);
+
+  await db.query(text)
+    .then (() => {
+      return next();
+    }).catch (err => {
+      return next(err);
+    });
+};
+
+divvyController.getUser = async (req, res, next) => {
+  const text = `SELECT * FROM user WHERE user.username = ${req.body.user};`;
+
+  await db.query(text)
+    .then ((response) => {
+      console.log('res', response.rows); 
+      res.locals.user = response.rows;
+      return next();
+    }).catch (err => {
+      return next(err);
+    });
+}
 
 module.exports = divvyController;
