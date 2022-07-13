@@ -16,12 +16,28 @@ import Split from "./pages/Split.jsx";
 const App = () => (
   <div>
     <nav className="navbar">
-      <img className="navbar-logo" src={"/assets/images/logo.png"} alt="DIV/VY" />
+      <img
+        className="navbar-logo"
+        src={"/assets/images/logo.png"}
+        alt="DIV/VY"
+      />
       <div className="navbar-links">
-        <Link className="navbar-link" to="/"> Home </Link>
-        <Link className="navbar-link" to="/login"> Login </Link>
-        <Link className="navbar-link" to="/split"> Split a Bill </Link>
-        <Link className="navbar-link" to="/history"> Bill History </Link>
+        <Link className="navbar-link" to="/">
+          {" "}
+          Home{" "}
+        </Link>
+        <Link className="navbar-link" to="/login">
+          {" "}
+          Login{" "}
+        </Link>
+        <Link className="navbar-link" to="/split">
+          {" "}
+          Split a Bill{" "}
+        </Link>
+        <Link className="navbar-link" to="/history">
+          {" "}
+          Bill History{" "}
+        </Link>
       </div>
     </nav>
 
