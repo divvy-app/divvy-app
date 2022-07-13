@@ -8,7 +8,9 @@ const Landing = () => {
   return (
     <div className="landing-container">
       <div className="landing">
-        <button id='landing-button' onClick={()=>{navigate('/login')}} aria-label="landing" > Let's Get Started </button>
+        <div className="landingTitle">DIV/VY</div>
+        <div className="moto">Splitting bills has never been easier</div>
+        <button aria-label="landing" id='landing-button' onClick={()=>{navigate('/login')}} > Let's Get Started </button>
       </div>
     </div>
   )

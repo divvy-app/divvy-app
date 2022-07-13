@@ -36,7 +36,22 @@ CREATE TABLE  public.bill (
   OIDS=FALSE
 );
 
+CREATE TABLE public.session (
+  "_id" serial NOT NULL,
+  "ssid" serial NOT NULL,
+  "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT "session_pk" PRIMARY KEY ("_id")
+) WITH (
+  OIDS=FALSE
+);
+
 ALTER TABLE public.bill ADD CONSTRAINT "user_fk0" FOREIGN KEY ("user_id") REFERENCES public.user("_id");
+
+-- DELETE FROM public.session WHERE now() - 'created_at' > '00:30:00'::interval;
+
+INSERT INTO "public"."user"("username", "email", "password") VALUES ('admin', 'admin@div.vy', 'pass');
+INSERT INTO "public"."bill"("title", "totalCost", "numSplit", "userCost", "user_id") VALUES ('ratatouille', 150.00, 5, 30.00, 1);
 
 SELECT setval('public.user__id_seq', 1, false);
 SELECT setval('public.bill__id_seq', 1, false);
+SELECT setval('public.session__id_seq', 1, false);

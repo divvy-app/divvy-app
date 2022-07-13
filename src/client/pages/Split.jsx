@@ -1,42 +1,49 @@
 import React, {useState} from "react";
+import { useSelector } from "react-redux";
 
 // includes JSX
 const Split = () => {
   const [split, setSplit] = useState("");
+  const [bill, setBill] = useState("");
+
+  const email = useSelector((state) => state.user.email);
   
   function submit (e) {
     let form = document.querySelector(".split-form");
     e.preventDefault() // This prevents the window from reloading
     let formdata = new FormData(form);
     let expense = formdata.get("expense");
-    let total = parseFloat(formdata.get("total"));
+    let totalNum = parseFloat(formdata.get("total"));
     let people = parseFloat(formdata.get("people"));
-    let split = (total/people).toFixed(2);
+    let split = (totalNum/people).toFixed(2);
     
-    if (expense && total && people) {
+    if (expense && totalNum && people) {
       console.log("this is the expense name,", expense);
-      console.log("this is the total", total);
+      console.log("this is the total", totalNum);
       console.log("this is the split num of people", people);
       console.log("Split: ", split)
+      console.log("this is the email:", email)
       setSplit(`$${split}/person`)
     }
     
-/*     const data = JSON.stringify({
-      email: inputEmail,
-      password: inputPass,
+    const data = JSON.stringify({
+      email: email,
+      title: expense,
+      total: totalNum, 
+      numSplit: people,
+      userCost: split
     })
 
-    const url = `http://localhost:3000/api/addBill`
+    const url = `http://localhost:3000/user/addBill`
     fetch(url, {
-            method: "GET",
+            method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: data
     })
-    .then(res => res.json())
     .then(res => {
-      if (res.err) setLogin("Login Unsuccessful")
-      else window.location.href="http://localhost:8080/history"; 
-    })  */
+      if (res.status === 200) setBill("Added Bill");
+      else if (res.status === 400) console.log("couldn't add bill")
+    }) 
   }
 
   return (
@@ -53,6 +60,7 @@ const Split = () => {
       <div className="splitNum">Split between <input className="splitInput" name="people" aria-label="people"/> people</div>
       <button className="split-btn" type="button" onClick={submit}>Split</button>
       <div className="calculation"><u>{split}</u></div>
+      <div className="addedBill">{bill}</div>
       </div>
       </form>
       </div>
