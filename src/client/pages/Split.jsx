@@ -55,9 +55,9 @@ const Split = () => {
       </div>
       <img className="moneygif" src={"/assets/images/money.gif"}></img>
       <div className="userInput">
-      <div className="expenseTitle">Expense Title <input className="titleInput" name="expense"/></div>
-      <div className="total">Total $ <input className="totalInput" name="total"/></div>
-      <div className="splitNum">Split between <input className="splitInput" name="people"/> people</div>
+      <div className="expenseTitle">Expense Title <input className="titleInput" name="expense" aria-label="expense"/></div>
+      <div className="total">Total $ <input className="totalInput" name="total" aria-label="total"/></div>
+      <div className="splitNum">Split between <input className="splitInput" name="people" aria-label="people"/> people</div>
       <button className="split-btn" type="button" onClick={submit}>Split</button>
       <div className="calculation"><u>{split}</u></div>
       <div className="addedBill">{bill}</div>

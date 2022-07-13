@@ -69,7 +69,7 @@ const History = () => {
     <div className="history">
       {bills}
       <div>
-        <button className="getBills" onClick={()=> test()}>Get Bills</button>
+        <button className="getBills" onClick={() => test()} aria-label="load">Test</button>
       </div>
     </div>
   </div>
