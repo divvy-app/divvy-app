@@ -19,4 +19,8 @@ router.post(
   (req, res) => res.sendStatus(200)
 );
 
+router.post("/getID", billController.getUserID, (req, res) => {
+  res.sendStatus(200)
+});
+
 module.exports = router;

@@ -104,35 +104,57 @@ userController.verifyUser = async (req, res, next) => {
   }
 };
 
-// billController.getUser = async (req, res, next) => {
-//   const text = `SELECT * FROM user WHERE user.username = ${req.body.user};`;
+userController.getUserID = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    const findID = `SELECT _id FROM "user" WHERE "email" = '${email}';`;
+    const data = await db.query(findID);
+    console.log("This is the ID", data.rows[0]._id);
+    res.locals.userID = data.rows[0]._id;
+    return next();
+  } catch (err) {
+    return next({
+      status: 402,
+      log: `userController.verifyUser error!! Error follows: ${err}`,
+      message: { err: "You made an error in the userController.verifyUser" },
+    });
+  }
+};
 
-//   await db
-//     .query(text)
-//     .then((response) => {
-//       console.log("res", response.rows);
-//       res.locals.user = response.rows;
-//       return next();
-//     })
-//     .catch((err) => {
-//       return next(err);
-//     });
-// };
+userController.addBill = async (req, res, next) => {
+  try {
+    const { title, total, numSplit, userCost } = req.body;
+    const userid = res.locals.userID;
 
-// billController.addUser = async (req, res, next) => {
-//   console.log("req.body", req.body);
-//   const body = req.body;
-//   //const text = `INSERT INTO user (user, email, password) VALUES ('${body.user}', '${body.email}', '${body.password}');`;
-//   const text = `INSERT INTO user (username) VALUES ('${body.user}');`;
-//   console.log(text);
+    console.log(req.body, "User ID: ", userid);
+    const createBill = `INSERT INTO "bill" ("title", "numSplit", "userCost", "totalCost", "user_id") VALUES ($1, $2, $3, $4, $5);`;
+    const newBillDetails = [title, numSplit, userCost, total, userid];
+    const data = await db.query(createBill, newBillDetails);
+    console.log("Created a new bill");
+    return next();
+  } catch (err) {
+    return next({
+      status: 402,
+      log: `userController.addBill error!! Error follows: ${err}`,
+      message: { err: "You made an error in the userController.addBill" },
+    });
+  }
+};
 
-//   await db
-//     .query(text)
-//     .then(() => {
-//       return next();
-//     })
-//     .catch((err) => {
-//       return next(err);
-//     });
-// };
+userController.getBills = async (req, res, next) => {
+  try {
+    const text = `SELECT * FROM "bill"`;
+    const data = await db.query(text);
+    console.log("This is the bill history", data.rows);
+    res.locals.billhistory= data.rows;
+    return next();
+  } catch (err) {
+    return next({
+      status: 402,
+      log: `userController.getBills error!! Error follows: ${err}`,
+      message: { err: "You made an error in the userController.getBills" },
+    });
+  }
+};
+
 module.exports = userController;

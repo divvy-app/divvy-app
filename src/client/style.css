@@ -221,10 +221,15 @@ body, html {
 }
 
 .landingTitle {
-  font-size: 20rem;
+  font-size: 15rem;
 }
 
 .moto {
   font-size: 2rem;
   font-family: monospace;
+}
+
+.addedBill {
+  color:green;
+  font-size: large;
 }
