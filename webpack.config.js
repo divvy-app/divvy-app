@@ -19,12 +19,9 @@ module.exports = {
     // match the output path
     static: {
       directory: path.resolve(__dirname, "dist"),
-      // match the output 'publicPath'
       publicPath: "/",
     },
-    // enable HMR on the devServer
     hot: true,
-    // fallback to root for other urls
     historyApiFallback: true,
     headers: { "Access-Control-Allow-Origin": "*" },
     /**
@@ -81,8 +78,4 @@ module.exports = {
       template: "./src/client/index.html",
     }),
   ],
-  resolve: {
-    // Enable importing JS / JSX files without specifying their extension
-    extensions: [".js", ".jsx"],
-  },
 };

@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 const path = require("path");
 
-const apiRouter = require('./routes/api');
+const apiRouter = require("./routes/api");
 const userRouter = require("./routes/userRouter");
 
 // Define runtime constants
@@ -36,20 +36,28 @@ if (process.env.NODE_ENV === "production") {
     const indexFile = path.join(__dirname, "../client/index.html");
     return res.status(200).sendFile(indexFile);
   });
-  app.use('/api', apiRouter);
+  app.use("/api", apiRouter);
 }
 
-//Catch all error handler
+// Set up catch-all error handler for unrecognized endpoints
 app.use((req, res) => {
   return res.status(404).send("You in the wrong place");
 });
 
+// Set up global error handler
 app.use((error, req, res, next) => {
-  const formattedError = { ...ERROR_TEMPLATE, ...error };
-  console.error(formattedError.internalStatus);
-  console.error(formattedError.log);
+  const normalizedErrorSource =
+    error instanceof Error
+      ? { log: error.stack }
+      : typeof error === "object" // Catches objects and null; null is safely destructure-able
+      ? error
+      : { log: `Non-error value ${error} thrown` };
 
-  return res.status(formattedError.externalStatus).json(formattedError.msg);
+  const fullError = { ...ERROR_TEMPLATE, ...normalizedErrorSource };
+  console.error(fullError.internalStatus);
+  console.error(fullError.log);
+
+  return res.status(fullError.externalStatus).json(fullError.msg);
 });
 
 // Set up port
