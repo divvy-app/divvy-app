@@ -1,5 +1,5 @@
-const clientSecret = "5f8a5b8c20ba50acd83ad6d467220c15939d8d47";
-const clientID = "4d828c754c60a2276cbe";
+const clientSecret = "";
+const clientID = "";
 const axios = require("axios");
 const bcrypt = require("bcrypt");
 const db = require("../models/divvyModels");
