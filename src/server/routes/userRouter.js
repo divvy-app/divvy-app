@@ -11,4 +11,6 @@ router.get(
   }
 );
 
+router.post("/user", user);
+
 module.exports = router;

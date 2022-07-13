@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 const path = require("path");
 
-const apiRouter = require("./routes/api");
+const apiRouter = require("./routes/billRouter");
 const userRouter = require("./routes/userRouter");
 
 // Define runtime constants
@@ -25,7 +25,7 @@ app.use(cookieParser());
 
 //Using Router to modularize requests
 app.use("/user", userRouter);
-app.use('/api', apiRouter);
+app.use("/api", apiRouter);
 
 app.get("/callback", (req, res) => {
   return res.status(200).send("It worked!");
