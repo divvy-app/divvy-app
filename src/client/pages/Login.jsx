@@ -28,27 +28,21 @@ const Login = () => {
 
     const url = `http://localhost:3000/user/login`;
     fetch(url, {
-<<<<<<< HEAD
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: data,
-=======
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: data
     })
-    .then(res => res.json())
-    .then(res => {
-      if (res.err) setLogin("Login Unsuccessful, Try Again")
-      else if (res === true) {
-        //setLogin("Login Successful")
-        window.location.href="http://localhost:8080/history"; 
-      }
-    })
-    .catch(err => {
-      setLogin("Login Unsuccessful, Try Again")
->>>>>>> fd2a3c49b4d8129aa81005d953236890e980d64c
-    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.err) setLogin("Login Unsuccessful, Try Again");
+        else if (res === true) {
+          //setLogin("Login Successful")
+          window.location.href = "http://localhost:8080/history";
+        }
+      })
+      .catch((err) => {
+        setLogin("Login Unsuccessful, Try Again");
+      })
       .then((res) => res.json())
       .then((res) => {
         if (res.err) setLogin("Login Unsuccessful");

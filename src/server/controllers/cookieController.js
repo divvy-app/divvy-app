@@ -10,8 +10,8 @@ cookieController.startSessionCookie = async (req, res, next) => {
     //   httpOnly: true,
     //   expire: new Date(Date.now() + 100000),
     // });
-    res.cookie("Coding", "Hard");
-    console.log("Cookie created!");
+    // res.cookie("Coding", "Hard");
+    // console.log("Cookie created!");
     return next();
   } catch (err) {
     return next({
@@ -44,6 +44,22 @@ cookieController.verifySessionCookie = async (req, res, next) => {
   try {
     const findSession = `SELECT _id FROM "session" WHERE "ssid" = '${req.cookies.ssid}';`;
     const currentSession = await db.query(findSession);
+    return next();
+  } catch (err) {
+    return next({
+      status: 402,
+      log: `cookieController.verifySessionCookie error!! Error follows: ${err}`,
+      message: {
+        err: "You made an error in the cookieController.verifySessionCookie",
+      },
+    });
+  }
+};
+
+cookieController.test = async (req, res, next) => {
+  try {
+    res.cookie("token", "admin");
+    console.log("Cookie made!");
     return next();
   } catch (err) {
     return next({

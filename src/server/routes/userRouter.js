@@ -24,7 +24,7 @@ router.post(
 router.post(
   "/login",
   userController.verifyUser,
-  cookieController.startSessionCookie,
+  cookieController.test,
   (req, res) => {
     return res.status(200).send(res.locals.verified);
   }
