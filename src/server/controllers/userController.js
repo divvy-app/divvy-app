@@ -148,4 +148,21 @@ userController.getBills = async (req, res, next) => {
   }
 };
 
+userController.deleteBill = async (req, res, next) => {
+  const body = req.body;
+  const text = `DELETE FROM bill WHERE bill._id = ${body._id};`;
+
+  await db
+    .query(text)
+    .then((response) => {
+      console.log(response.rowCount);
+      if (response.rowCount === 0) res.locals.deleted = false;
+      else res.locals.deleted = true;
+      return next();
+    })
+    .catch((err) => {
+      return next(err);
+    });
+};
+
 module.exports = userController;
