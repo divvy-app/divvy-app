@@ -7,11 +7,11 @@ function Bill({props}) {
   const dispatch = useDispatch();
   const { allBills } = useSelector((state)=> state.bill);
 
-
-  const items = [];
-  for (let i = 0; i < props.cost.length; i++){
-    items.push(<div>{props.cost[i].title}: {props.cost[i].price}</div>)
-  }
+ console.log('bills',props)
+  //const items = [];
+  // for (let i = 0; i < props.cost.length; i++){
+  //   items.push(<div>{props.cost[i].title}: {props.cost[i].price}</div>)
+  // }
 
   function deleteThisBill(){
     dispatch(deleteBill(props._id));
@@ -26,15 +26,16 @@ function Bill({props}) {
     //   console.log(error);
     // });
 
-  }
+  } 
+  // title, totalCost, numSplit, userCost, user_id
     return(
       <div className='bill'>
           <button onClick={()=>deleteThisBill()}>X</button>
-          <div>id#: {props._id}</div>
-          <div>Bill#: {props.title}</div>
-          
-          <div>{items}</div>
-          <div>My Total: {props.myTotal}</div>
+          <div>Bill title: {props.title}</div>
+          <div>Bill id: {props._id} </div>
+          <div>Total cost: {props.totalCost} </div>
+          <div>My cost: {props.userCost} </div>
+ 
       </div>
  
     );

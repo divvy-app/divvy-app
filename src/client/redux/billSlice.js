@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  allBills: {},
+  allBills: [{title: 'loading'}],
 }
 
 export const billSlice = createSlice({
@@ -9,7 +9,8 @@ export const billSlice = createSlice({
   initialState,
   reducers: {
     loadingBills: (state, action) => {
-      state.allBills = action.payload;
+      //console.log('state in reducer',state, 'payload in reducer',action)
+      return { ...state, allBills: action.payload}
     },
     deleteBill: (state, action) => {
       state.allBills = state.allBills.filter(x => x._id != action.payload);
