@@ -41,4 +41,9 @@ router.post("/addBill", userController.getUserID, userController.addBill, (req, 
 router.get("/getBills", userController.getBills, (req, res) => {
   res.status(200).send(res.locals.billhistory);
 })
+
+router.delete("/deleteBill", userController.deleteBill, (req, res) => {
+  res.status(200).send(res.locals.deleted);
+})
+
 module.exports = router;

@@ -48,26 +48,6 @@ const Login = () => {
     .catch(err => {
       setLogin("Login Unsuccessful, Try Again")
     })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.err) setLogin("Login Unsuccessful, Try Again");
-        else if (res === true) {
-          //setLogin("Login Successful")
-          window.location.href = "http://localhost:8080/history";
-        }
-      })
-      .catch((err) => {
-        setLogin("Login Unsuccessful, Try Again");
-      })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.err) setLogin("Login Unsuccessful");
-        console.log("response: ", res);
-        //window.location.href="http://localhost:8080/history";
-      })
-      .catch((err) => {
-        setLogin("Login Unsuccessful");
-      });
   }
 
   return (
